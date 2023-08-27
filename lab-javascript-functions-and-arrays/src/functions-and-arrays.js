@@ -7,7 +7,7 @@ function maxOfTwoNumbers(num1, num2) {
     return num2;
   }
 }
-
+//comment
 // Iteration #2: Find longest word
 const words = [];
 
