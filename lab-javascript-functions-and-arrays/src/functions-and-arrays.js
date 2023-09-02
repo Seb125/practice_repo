@@ -121,3 +121,106 @@ if (typeof module !== 'undefined') {
     greatestProduct
   };
 }
+
+let greatestProductOfDiagonals = function (matrix) {
+  const numRows = matrix.length;
+  const numCol = matrix[0].length;
+  let greatesDiagonalProduct = 0;
+  for (let i = 0; i < numRows; i++) {
+    // first negative diagonals
+    let firstDiagonal = [];
+    let j = i;
+    let k = 0;
+    while (j < numRows) {  // while loop to get all diagonal elements starting from index i
+     
+      firstDiagonal.push(matrix[j][k]);
+      
+      j++;
+      k++;
+      
+    }
+    if (firstDiagonal.length >= 4) {
+      for (let y = 0; y <= firstDiagonal.length - 4; y++) {
+        if (greatesDiagonalProduct < firstDiagonal.slice(y, y+4).reduce((a,b) => a*b)) {
+          greatesDiagonalProduct = firstDiagonal.slice(y, y+4).reduce((a,b) => a*b);
+          console.log(firstDiagonal);
+        }
+    }
+  }
+   
+
+    let secondDiagonal = [];
+    j = i;
+    k = 0;
+
+    while (j >= 0) {  // while loop to get all diagonal elements starting from index i
+     
+      secondDiagonal.push(matrix[j][k]);
+      
+      j--;
+      k++;
+      
+    }
+
+    if (secondDiagonal.length >= 4) {
+      for (let y = 0; y <= secondDiagonal.length - 4; y++) {
+        if (greatesDiagonalProduct < secondDiagonal.slice(y, y+4).reduce((a,b) => a*b)) {
+          greatesDiagonalProduct = secondDiagonal.slice(y, y+4).reduce((a,b) => a*b);
+          console.log(secondDiagonal);
+        }
+    }
+  }
+    
+    
+
+  
+
+  let thirdDiagonal = [];
+  j = i;
+  k = numCol-1;
+  while (j < numRows) {  // while loop to get all diagonal elements starting from index i
+   
+    thirdDiagonal.push(matrix[j][k]);
+    
+    j++;
+    k--;
+    
+  }
+
+  if (thirdDiagonal.length >= 4) {
+    for (let y = 0; y <= thirdDiagonal.length - 4; y++) {
+      if (greatesDiagonalProduct < thirdDiagonal.slice(y, y+4).reduce((a,b) => a*b)) {
+        greatesDiagonalProduct = thirdDiagonal.slice(y, y+4).reduce((a,b) => a*b);
+        console.log(thirdDiagonal);
+      }
+  }
+}
+  
+
+  let fourthDiagonal = [];
+  j = i;
+  k = numCol-1;
+
+  while (j >= 0) {  // while loop to get all diagonal elements starting from index i
+   
+    fourthDiagonal.push(matrix[j][k]);
+    
+    j--;
+    k--;
+    
+  }
+
+  if (fourthDiagonal.length >= 4) {
+    for (let y = 0; y <= fourthDiagonal.length - 4; y++) {
+      if (greatesDiagonalProduct < fourthDiagonal.slice(y, y+4).reduce((a,b) => a*b)) {
+        greatesDiagonalProduct = fourthDiagonal.slice(y, y+4).reduce((a,b) => a*b);
+        console.log(fourthDiagonal);
+      }
+  }
+}
+  
+}
+
+console.log(greatesDiagonalProduct);
+
+}
